@@ -21,8 +21,11 @@ export default {
     }
   },
   mounted () {
+    const self = this
     setInterval(() => {
-
+      const rndm = Math.random()
+      self.imgLink1 = 'https://cbjpeg.stream.highwebmedia.com/stream?room=layanaqueen&f=' + rndm
+      self.imgLink2 = 'https://cbjpeg.stream.highwebmedia.com/stream?room=kim__possible&f=' + rndm
     }, 500)
   }
 }
