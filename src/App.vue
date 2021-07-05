@@ -1,33 +1,12 @@
 <template>
   <div id="app">
-    <img
-      :src="imgLink1"
-      height="100"
-      width="100">
-      <img
-      :src="imgLink2"
-      height="100"
-      width="100">
+    <iframe src='https://chaturbate.com/in/?tour=9oGW&amp;campaign=WQeC8&amp;track=88565448475&amp;room=annbarby&amp;bgcolor=transparent&disable_sound=1&embed_video_only=1&target=_parent' height=528 width=850 scrolling="no" id="cb_iframe"></iframe>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-  data () {
-    return {
-      imgLink1: null,
-      imgLink2: null
-    }
-  },
-  mounted () {
-    const self = this
-    setInterval(() => {
-      const rndm = Math.random()
-      self.imgLink1 = 'https://cbjpeg.stream.highwebmedia.com/stream?room=layanaqueen&f=' + rndm
-      self.imgLink2 = 'https://cbjpeg.stream.highwebmedia.com/stream?room=kim__possible&f=' + rndm
-    }, 500)
-  }
+  name: 'App'
 }
 </script>
 
