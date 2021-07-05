@@ -1,12 +1,29 @@
 <template>
   <div id="app">
-    <iframe src='https://chaturbate.com/in/?tour=9oGW&amp;campaign=WQeC8&amp;track=88565448475&amp;room=annbarby&amp;bgcolor=transparent&disable_sound=1&embed_video_only=1&target=_parent' height=528 width=850 scrolling="no" id="cb_iframe"></iframe>
+    <input type="text" v-model="mName">
+    <button @click="search">Search</button>
+    <iframe v-if="this.showFrame" :src="vSrc" height=528 width=850 scrolling="no" id="cb_iframe"></iframe>
+    <span v-else> Search </span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      mName: null,
+      showFrame: false,
+      vSrc: null
+    }
+  },
+  methods: {
+    search () {
+      this.showFrame = false
+      this.vSrc = 'https://chaturbate.com/in/?tour=9oGW&amp;campaign=WQeC8&amp;track=88565448475&amp;room=' + this.mName + '&amp;bgcolor=transparent&disable_sound=1&embed_video_only=1&target=_parent'
+      this.showFrame = true
+    }
+  }
 }
 </script>
 
