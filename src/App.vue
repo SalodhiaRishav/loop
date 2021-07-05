@@ -1,11 +1,24 @@
 <template>
   <div id="app">
-    <video-player :options="videoOptions"/>
-    <input type="text" v-model="mName">
-    <button @click="search">Search</button>
-    <button @click="download">Download</button>
-    <iframe v-if="this.showFrame" :src="vSrc" height=528 width=850></iframe>
-    <span v-else> Search </span>
+    <div>
+      <textarea cols="50" rows="10" v-model="tsSrc"></textarea>
+      <button @click="showVP">Show VP</button>
+      <button @click="closeVP">Close VP</button>
+      <video-player
+        v-if="showVPlayer"
+        :src="tsSrc"/>
+    </div>
+    <div>
+      <input type="text" v-model="mName">
+      <button @click="search">Search</button>
+      <button @click="close">Close</button>
+      <iframe
+        v-if="showFrame"
+        :src="vSrc"
+        height=528
+        width=850>
+      </iframe>
+    </div>
   </div>
 </template>
 
@@ -23,25 +36,19 @@ export default {
       mName: null,
       showFrame: false,
       vSrc: null,
-      videoOptions: {
-        autoplay: false,
-        controls: true,
-        sources: [
-          {
-            src: 'https://edge267.stream.highwebmedia.com/live-hls/amlst:emilia_bailey-sd-5dd59c2bbf56ce7bcbf2741cd9d76cf09668fedea400eb484ce580559510d422_trns_h264/chunklist_w745435110_b1148000_t64RlBTOjMwLjA=.m3u8',
-            type: 'application/x-mpegURL'
-          }
-        ]
-      }
+      tsSrc: null,
+      showVPlayer: false
     }
   },
   methods: {
-    download () {
-      const url = 'https://edge267.stream.highwebmedia.com/live-hls/amlst:emilia_bailey-sd-5dd59c2bbf56ce7bcbf2741cd9d76cf09668fedea400eb484ce580559510d422_trns_h264/chunklist_w745435110_b1148000_t64RlBTOjMwLjA=.m3u8'
-
-      this.axios.get(url).then((response) => {
-        console.log(response.data)
-      })
+    showVP () {
+      this.showVPlayer = true
+    },
+    closeVP () {
+      this.showVPlayer = false
+    },
+    close () {
+      this.showFrame = false
     },
     search () {
       this.showFrame = false
